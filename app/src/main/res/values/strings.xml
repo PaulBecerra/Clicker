@@ -4,4 +4,5 @@
     <string name="cancel">Cancelar</string>
     <string name="dialog_message">¿Seguro de borrar el contador?</string>
     <string name="dialog_title">AVISO</string>
+    <string name="dialog_inputEmpty">Count name is empty!!</string>
 </resources>
