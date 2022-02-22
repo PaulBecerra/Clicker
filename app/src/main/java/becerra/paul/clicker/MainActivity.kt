@@ -1,6 +1,7 @@
 package becerra.paul.clicker
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -63,35 +64,18 @@ class MainActivity : AppCompatActivity() {
         alertDialog?.show()
     }
 
-
-    override fun onPause() {
-        super.onPause()
-    }
-
-    override fun onStart(){
-        super.onStart()
-        Toast.makeText(this, "onStart", Toast.LENGTH_SHORT)
-
-    }
-
-    override fun onResume(){
-        super.onResume()
-        Toast.makeText(this, "onStart", Toast.LENGTH_SHORT)
-
-    }
-
     override fun onStop(){
         super.onStop()
-        Toast.makeText(this, "onStart", Toast.LENGTH_SHORT)
-
+        val sharedPref = this?.getPreferences(Context.MODE_PRIVATE)
+        val edit = sharedPref.edit()
+        edit.putInt("key_count",count)
+        edit.apply()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onStart() {
+        super.onStart()
+        val sharedPref = this?.getPreferences(Context.MODE_PRIVATE)
+        count = sharedPref.getInt("key_count", 0)
+        textViewCuenta.setText("$count")
     }
-
-    override fun onRestart() {
-        super.onRestart()
-    }
-
 }
